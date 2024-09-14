@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             } else if (snapshot.hasData) {
               return ListView(
                 children: [snapshot.data!]
-                    .map((component) => component.toWidget())
+                    .map((component) => component.toWidget(context))
                     .toList(),
               );
             } else {
@@ -48,7 +48,8 @@ class DynamicUIScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Dynamic UI from API")),
       body: ListView(
-        children: components.map((component) => component.toWidget()).toList(),
+        children:
+            components.map((component) => component.toWidget(context)).toList(),
       ),
     );
   }

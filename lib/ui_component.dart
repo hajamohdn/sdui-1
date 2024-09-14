@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pookie/webview_screen.dart';
 
 abstract class UIComponent {
   final String key;
@@ -14,6 +15,8 @@ abstract class UIComponent {
           return ColumnComponent.fromJson(json);
         case 'text':
           return TextComponent.fromJson(json);
+        case 'button':
+          return ButtonComponent.fromJson(json);
         // Add more components here like button, card, etc.
         case 'card':
           return CardComponent.fromJson(json);
@@ -33,7 +36,7 @@ abstract class UIComponent {
   }
 
   // Convert UIComponent into a Flutter Widget
-  Widget toWidget();
+  Widget toWidget(BuildContext context);
 }
 
 class ContainerComponent extends UIComponent {
@@ -59,11 +62,11 @@ class ContainerComponent extends UIComponent {
   }
 
   @override
-  Widget toWidget() {
+  Widget toWidget(context) {
     return Container(
       padding: EdgeInsets.all(padding),
       color: Color(backgroundColor),
-      child: child.toWidget(),
+      child: child.toWidget(context),
     );
   }
 }
@@ -95,9 +98,9 @@ class ColumnComponent extends UIComponent {
   }
 
   @override
-  Widget toWidget() {
+  Widget toWidget(context) {
     return Column(
-      children: children.map((child) => child.toWidget()).toList(),
+      children: children.map((child) => child.toWidget(context)).toList(),
     );
   }
 }
@@ -118,38 +121,51 @@ class TextComponent extends UIComponent {
   }
 
   @override
-  Widget toWidget() {
+  Widget toWidget(context) {
     return Text(text);
   }
 }
 
 class ButtonComponent extends UIComponent {
-  final String label;
-  final String actionUrl; // Assuming the button will trigger a URL action
+  final UIComponent child; // A nested UI component (e.g., TextComponent)
+  final String actionType; // The type of action when the button is pressed
+  final String? url; // Optional URL for actions like opening a webview
 
   ButtonComponent({
     required String key,
-    required this.label,
-    required this.actionUrl,
+    required this.child,
+    required this.actionType,
+    this.url,
   }) : super(key);
 
   factory ButtonComponent.fromJson(Map<String, dynamic> json) {
     return ButtonComponent(
       key: json['key'],
-      label: json['data']['label'], // Button label text
-      actionUrl: json['data']['actionUrl'], // URL to navigate when clicked
+      child: UIComponent.fromJson(json['data']['child']),
+      actionType: json['data']['event']['actionType'],
+      url: json['data']['event']['url'],
     );
   }
 
   @override
-  Widget toWidget() {
+  Widget toWidget(context) {
     return ElevatedButton(
       onPressed: () {
-        // Handle the button action, like navigating or opening a WebView
-        // For now, just printing the URL as an example
-        print('Navigating to: $actionUrl');
+        if (actionType == 'open_webview' && url != null) {
+          // Example of opening a WebView or triggering any action
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => WebviewScreen(url: url!)),
+          );
+          print('Opening WebView: $url');
+          // Call your WebView or navigation logic here
+        } else {
+          // Handle other action types if necessary
+          print('Action triggered: $actionType');
+        }
       },
-      child: Text(label),
+      child: child
+          .toWidget(context), // Render the nested child component (e.g., TextComponent)
     );
   }
 }
@@ -171,7 +187,7 @@ class ImageComponent extends UIComponent {
   }
 
   @override
-  Widget toWidget() {
+  Widget toWidget(context) {
     return Image.network(imageUrl);
   }
 }
@@ -198,13 +214,13 @@ class CardComponent extends UIComponent {
   }
 
   @override
-  Widget toWidget() {
+  Widget toWidget(context) {
     return Card(
       color: Color(color),
       elevation: elevation,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: child.toWidget(),
+        child: child.toWidget(context),
       ),
     );
   }
@@ -218,7 +234,7 @@ class PlaceholderComponent extends UIComponent {
   }
 
   @override
-  Widget toWidget() {
+  Widget toWidget(context) {
     return const Placeholder();
   }
 }
