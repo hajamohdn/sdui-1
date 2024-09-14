@@ -75,7 +75,7 @@ class ContainerComponent extends UIComponent {
     return Container(
       color: backgroundColor,
       padding: EdgeInsets.all(padding),
-      height: height ?? double.infinity,
+      // height: height ?? double.infinity,
       width: width ?? double.infinity,
       child: child.toWidget(context),
     );
@@ -205,8 +205,8 @@ class ImageComponent extends UIComponent {
 
 class CardComponent extends UIComponent {
   final UIComponent child;
-  final double elevation;
-  final int color;
+  final double? elevation;
+  final Color color;
   final double? height;
   final double? width;
 
@@ -223,14 +223,14 @@ class CardComponent extends UIComponent {
     return CardComponent(
       key: json['key'],
       child: UIComponent.fromJson(json['data']['child']),
-      elevation: json['data']['elevation'],
-      color: int.parse(json['data']['color']),
-      height: json['data'].containsKey('height')
-          ? json['data']['height']?.toDouble()
-          : null,
-      width: json['data'].containsKey('width')
-          ? json['data']['width']?.toDouble()
-          : null,
+      elevation: json['data']['elevation']?.toDouble(),
+      color: Color(int.parse(json['data']['color'])),
+      height: json['data']['height'] == null
+          ? double.infinity
+          : json['data']['height']?.toDouble(),
+      width: json['data']['width'] == null
+          ? double.infinity
+          : json['data']['width']?.toDouble(),
     );
   }
 
@@ -238,12 +238,10 @@ class CardComponent extends UIComponent {
   Widget toWidget(context) {
     return Card(
       elevation: elevation,
-      color: Color(color),
+      color: color,
       child: SizedBox(
-        height: height ??
-            double.infinity, // Fill height if provided, otherwise let it expand
-        width: width ??
-            double.infinity, // Fill width if provided, otherwise let it expand
+        // height: height,
+        width: width,
         child: child.toWidget(context),
       ),
     );

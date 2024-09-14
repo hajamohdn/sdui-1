@@ -25,6 +25,7 @@
                             "data": {
                                 "elevation": 2,
                                 "color": "0xFFFFFFFF",
+                                "width": null,
                                 "child": {
                                     "type": "column",
                                     "key": "first_card_column",
@@ -90,6 +91,7 @@
                             "data": {
                                 "elevation": 2,
                                 "color": "0xFFFFFFFF",
+                                "width": null,
                                 "child": {
                                     "type": "column",
                                     "key": "second_card_column",
