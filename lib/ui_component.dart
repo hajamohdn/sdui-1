@@ -141,11 +141,13 @@ class ButtonComponent extends UIComponent {
   final UIComponent child; // A nested UI component (e.g., TextComponent)
   final String actionType; // The type of action when the button is pressed
   final String? url; // Optional URL for actions like opening a webview
+  final int? padding;
 
   ButtonComponent({
     required String key,
     required this.child,
     required this.actionType,
+    required this.padding,
     this.url,
   }) : super(key);
 
@@ -155,28 +157,32 @@ class ButtonComponent extends UIComponent {
       child: UIComponent.fromJson(json['data']['child']),
       actionType: json['data']['event']['actionType'],
       url: json['data']['event']['url'],
+      padding: json['data']['padding'],
     );
   }
 
   @override
   Widget toWidget(context) {
-    return ElevatedButton(
-      onPressed: () {
-        if (actionType == 'open_webview' && url != null) {
-          // Example of opening a WebView or triggering any action
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => WebviewScreen(url: url!)),
-          );
-          print('Opening WebView: $url');
-          // Call your WebView or navigation logic here
-        } else {
-          // Handle other action types if necessary
-          print('Action triggered: $actionType');
-        }
-      },
-      child: child.toWidget(
-          context), // Render the nested child component (e.g., TextComponent)
+    return Padding(
+      padding: EdgeInsets.all(padding?.toDouble() ?? 0.0) ?? EdgeInsets.zero,
+      child: ElevatedButton(
+        onPressed: () {
+          if (actionType == 'open_webview' && url != null) {
+            // Example of opening a WebView or triggering any action
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => WebviewScreen(url: url!)),
+            );
+            print('Opening WebView: $url');
+            // Call your WebView or navigation logic here
+          } else {
+            // Handle other action types if necessary
+            print('Action triggered: $actionType');
+          }
+        },
+        child: child.toWidget(
+            context), // Render the nested child component (e.g., TextComponent)
+      ),
     );
   }
 }
