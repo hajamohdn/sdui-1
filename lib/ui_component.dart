@@ -41,31 +41,42 @@ abstract class UIComponent {
 
 class ContainerComponent extends UIComponent {
   final UIComponent child;
+  final Color backgroundColor;
   final double padding;
-  final int backgroundColor;
+  final double? height;
+  final double? width;
 
   ContainerComponent({
     required String key,
     required this.child,
-    required this.padding,
     required this.backgroundColor,
+    required this.padding,
+    this.height,
+    this.width,
   }) : super(key);
 
   factory ContainerComponent.fromJson(Map<String, dynamic> json) {
     return ContainerComponent(
       key: json['key'],
+      backgroundColor: Color(int.parse(json['data']['backgroundColor'])),
+      padding: json['data']['padding']?.toDouble() ?? 0.0,
       child: UIComponent.fromJson(json['data']['child']),
-      padding: json['data']['padding'] ??
-          8.0, // Default to 8.0 if padding is not provided
-      backgroundColor: int.parse(json['data']['backgroundColor']),
+      height: json['data'].containsKey('height')
+          ? json['data']['height']?.toDouble()
+          : null,
+      width: json['data'].containsKey('width')
+          ? json['data']['width']?.toDouble()
+          : null,
     );
   }
 
   @override
   Widget toWidget(context) {
     return Container(
+      color: backgroundColor,
       padding: EdgeInsets.all(padding),
-      color: Color(backgroundColor),
+      height: height ?? double.infinity,
+      width: width ?? double.infinity,
       child: child.toWidget(context),
     );
   }
@@ -164,8 +175,8 @@ class ButtonComponent extends UIComponent {
           print('Action triggered: $actionType');
         }
       },
-      child: child
-          .toWidget(context), // Render the nested child component (e.g., TextComponent)
+      child: child.toWidget(
+          context), // Render the nested child component (e.g., TextComponent)
     );
   }
 }
@@ -196,12 +207,16 @@ class CardComponent extends UIComponent {
   final UIComponent child;
   final double elevation;
   final int color;
+  final double? height;
+  final double? width;
 
   CardComponent({
     required String key,
     required this.child,
     required this.elevation,
     required this.color,
+    this.height,
+    this.width,
   }) : super(key);
 
   factory CardComponent.fromJson(Map<String, dynamic> json) {
@@ -210,16 +225,25 @@ class CardComponent extends UIComponent {
       child: UIComponent.fromJson(json['data']['child']),
       elevation: json['data']['elevation'],
       color: int.parse(json['data']['color']),
+      height: json['data'].containsKey('height')
+          ? json['data']['height']?.toDouble()
+          : null,
+      width: json['data'].containsKey('width')
+          ? json['data']['width']?.toDouble()
+          : null,
     );
   }
 
   @override
   Widget toWidget(context) {
     return Card(
-      color: Color(color),
       elevation: elevation,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
+      color: Color(color),
+      child: SizedBox(
+        height: height ??
+            double.infinity, // Fill height if provided, otherwise let it expand
+        width: width ??
+            double.infinity, // Fill width if provided, otherwise let it expand
         child: child.toWidget(context),
       ),
     );
