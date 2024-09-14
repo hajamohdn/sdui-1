@@ -7,7 +7,7 @@ class UIService {
     final response = await http
         .get(Uri.parse('https://657fe3c26ae0629a3f53cd6b.mockapi.io/pookie'));
     if (response.statusCode == 200) {
-      final json = jsonDecode(response.body)[0];
+      final json = jsonDecode(response.body);
       return UIComponent.fromJson(json);
     } else {
       throw Exception('Failed to load UI configuration');

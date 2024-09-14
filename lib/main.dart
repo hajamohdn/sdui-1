@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'ui_service.dart';
-import 'component_factory.dart';
 import 'ui_component.dart';
 
 void main() {
@@ -14,40 +13,42 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: FutureBuilder<UIComponent>(
-        future: UIService().fetchUIConfig(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Scaffold(
-              body: Center(child: CircularProgressIndicator()),
-            );
-          } else if (snapshot.hasError) {
-            return const Scaffold(
-              body: Center(child: Text('Failed to load UI configuration')),
-            );
-          } else {
-            return DynamicScreen(component: snapshot.data!);
-          }
-        },
+      home: // Assuming the snapshot has a List<dynamic> and not a Map<String, dynamic>
+          Scaffold(
+        body: FutureBuilder<UIComponent>(
+          future: UIService().fetchUIConfig(),
+          builder: (BuildContext context, AsyncSnapshot<UIComponent> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else if (snapshot.hasData) {
+              return ListView(
+                children: [snapshot.data!]
+                    .map((component) => component.toWidget())
+                    .toList(),
+              );
+            } else {
+              return const Text('No data');
+            }
+          },
+        ),
       ),
     );
   }
 }
 
-class DynamicScreen extends StatelessWidget {
-  final UIComponent component;
+class DynamicUIScreen extends StatelessWidget {
+  final List<UIComponent> components;
 
-  const DynamicScreen({super.key, required this.component});
+  const DynamicUIScreen({super.key, required this.components});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dynamic UI from API'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ComponentFactory.buildComponent(component, context),
+      appBar: AppBar(title: const Text("Dynamic UI from API")),
+      body: ListView(
+        children: components.map((component) => component.toWidget()).toList(),
       ),
     );
   }

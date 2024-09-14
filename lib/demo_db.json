@@ -1,0 +1,140 @@
+[
+    {
+        "type": "container",
+        "key": "main_container",
+        "data": {
+            "backgroundColor": "0xFFFFFFFF",
+            "padding": 16,
+            "child": {
+                "type": "column",
+                "key": "main_column",
+                "data": {
+                    "children": [
+                        {
+                            "type": "text",
+                            "key": "credit_card_title",
+                            "data": {
+                                "text": "Credit Card",
+                                "fontSize": 24,
+                                "color": "0xFF000000"
+                            }
+                        },
+                        {
+                            "type": "card",
+                            "key": "first_card",
+                            "data": {
+                                "elevation": 2,
+                                "color": "0xFFFFFFFF",
+                                "child": {
+                                    "type": "column",
+                                    "key": "first_card_column",
+                                    "data": {
+                                        "children": [
+                                            {
+                                                "type": "text",
+                                                "key": "first_card_title",
+                                                "data": {
+                                                    "text": "Start your credit card journey today!",
+                                                    "fontSize": 18
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "key": "first_card_subtitle",
+                                                "data": {
+                                                    "text": "A simple guide to choosing your perfect credit card"
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "key": "know_more_button",
+                                                "data": {
+                                                    "child": {
+                                                        "type": "text",
+                                                        "key": "know_more_text",
+                                                        "data": {
+                                                            "text": "Know more"
+                                                        }
+                                                    },
+                                                    "event": {
+                                                        "actionType": "open_webview",
+                                                        "url": "https://yourwebpage.com"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "key": "apply_now_button",
+                                                "data": {
+                                                    "child": {
+                                                        "type": "text",
+                                                        "key": "apply_now_text",
+                                                        "data": {
+                                                            "text": "Apply Now"
+                                                        }
+                                                    },
+                                                    "event": {
+                                                        "actionType": "open_webview",
+                                                        "url": "https://yourwebpage.com/apply"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "card",
+                            "key": "second_card",
+                            "data": {
+                                "elevation": 2,
+                                "color": "0xFFFFFFFF",
+                                "child": {
+                                    "type": "column",
+                                    "key": "second_card_column",
+                                    "data": {
+                                        "children": [
+                                            {
+                                                "type": "text",
+                                                "key": "second_card_title",
+                                                "data": {
+                                                    "text": "Smart Credit Card Management",
+                                                    "fontSize": 18
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "key": "second_card_subtitle",
+                                                "data": {
+                                                    "text": "Manage your credit cards: track spending, view rewards, stay organized."
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "key": "manage_button",
+                                                "data": {
+                                                    "child": {
+                                                        "type": "text",
+                                                        "key": "manage_text",
+                                                        "data": {
+                                                            "text": "Manage"
+                                                        }
+                                                    },
+                                                    "event": {
+                                                        "actionType": "navigate",
+                                                        "screenTitle": "Manage Credit Cards"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+]
