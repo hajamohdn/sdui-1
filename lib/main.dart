@@ -3,7 +3,6 @@ import 'ui_service.dart';
 import 'ui_component.dart';
 
 void main() {
-  // ignore: prefer_const_constructors
   runApp(MyApp());
 }
 
@@ -13,8 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: // Assuming the snapshot has a List<dynamic> and not a Map<String, dynamic>
-          Scaffold(
+      home: Scaffold(
         body: FutureBuilder<UIComponent>(
           future: UIService().fetchUIConfig(),
           builder: (BuildContext context, AsyncSnapshot<UIComponent> snapshot) {

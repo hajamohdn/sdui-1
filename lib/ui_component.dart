@@ -28,9 +28,8 @@ abstract class UIComponent {
           return PlaceholderComponent(key: json['key']);
       }
     } else if (json is List) {
-      // If it's a list of components, return them all as a ColumnComponent.
       return ColumnComponent(
-        key: 'auto-generated-column', // Or any key you'd prefer.
+        key: 'auto-generated-column',
         children:
             json.map((childJson) => UIComponent.fromJson(childJson)).toList(),
       );
@@ -39,7 +38,6 @@ abstract class UIComponent {
     }
   }
 
-  // Convert UIComponent into a Flutter Widget
   Widget toWidget(BuildContext context);
 }
 
@@ -97,7 +95,6 @@ class ColumnComponent extends UIComponent {
   factory ColumnComponent.fromJson(Map<String, dynamic> json) {
     var childrenJson = json['data']['children'];
 
-    // Ensure it's a list before trying to map it
     if (childrenJson is List) {
       List<UIComponent> children = childrenJson
           .map((childJson) => UIComponent.fromJson(childJson))
@@ -142,9 +139,9 @@ class TextComponent extends UIComponent {
 }
 
 class ButtonComponent extends UIComponent {
-  final UIComponent child; // A nested UI component (e.g., TextComponent)
-  final String actionType; // The type of action when the button is pressed
-  final String? url; // Optional URL for actions like opening a webview
+  final UIComponent child;
+  final String actionType;
+  final String? url;
   final int? padding;
   final String? addons;
 
@@ -197,9 +194,9 @@ class ButtonComponent extends UIComponent {
 
 class ButtonComponentWithAPICalls extends UIComponent {
   final UIComponent child;
-  final String? apiUrl; // Make it nullable
-  final String method; // Set a default value
-  final Map<String, dynamic>? body; // Make it nullable
+  final String? apiUrl;
+  final String method;
+  final Map<String, dynamic>? body;
   final int? padding;
 
   ButtonComponentWithAPICalls({
@@ -207,17 +204,17 @@ class ButtonComponentWithAPICalls extends UIComponent {
     required this.child,
     this.apiUrl,
     required this.padding,
-    this.method = 'GET', // Default to GET if null
+    this.method = 'GET',
     this.body,
   }) : super(key);
 
   factory ButtonComponentWithAPICalls.fromJson(Map<String, dynamic> json) {
     return ButtonComponentWithAPICalls(
-      key: json['key'] ?? 'unknown', // Provide a default if null
+      key: json['key'] ?? 'unknown',
       child: UIComponent.fromJson(json['data']['child']),
-      apiUrl: json['data']['event']?['apiUrl'], // Use null if not present
-      method: json['data']['event']?['method'] ?? 'GET', // Default to 'GET'
-      body: json['data']['event']?['body'], // Null if not present
+      apiUrl: json['data']['event']?['apiUrl'],
+      method: json['data']['event']?['method'] ?? 'GET',
+      body: json['data']['event']?['body'],
       padding: json['data']['padding'],
     );
   }
@@ -262,7 +259,7 @@ class ButtonComponentWithAPICalls extends UIComponent {
       padding: EdgeInsets.all(padding?.toDouble() ?? 0.0),
       child: ElevatedButton(
         onPressed: () async {
-          await makeApiCall(context); // Call API on button press
+          await makeApiCall(context);
         },
         child: child.toWidget(context),
       ),
@@ -282,7 +279,7 @@ class ImageComponent extends UIComponent {
     return ImageComponent(
       key: json['key'],
       imageUrl: json['data']
-          ['url'], // Assuming the image URL is stored under 'data'
+          ['url'],
     );
   }
 
