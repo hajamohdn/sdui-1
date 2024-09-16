@@ -143,14 +143,14 @@ class ButtonComponent extends UIComponent {
   final String actionType;
   final String? url;
   final int? padding;
-  final String? addons;
+  final String? firebaseEvent;
 
   ButtonComponent({
     required String key,
     required this.child,
     required this.actionType,
     required this.padding,
-    required this.addons,
+    required this.firebaseEvent,
     this.url,
   }) : super(key);
 
@@ -161,7 +161,7 @@ class ButtonComponent extends UIComponent {
       actionType: json['data']['event']['actionType'],
       url: json['data']['event']['url'],
       padding: json['data']['padding'],
-      addons: json['event']['addons'],
+      firebaseEvent: json['data']['firebaseEvent']?["event_name"],
     );
   }
 
@@ -171,10 +171,8 @@ class ButtonComponent extends UIComponent {
       padding: EdgeInsets.all(padding?.toDouble() ?? 0.0),
       child: ElevatedButton(
         onPressed: () {
-          if (addons == "mixpanel_event") {
-            //
-          } else if (addons == "firebase_event") {
-            //
+          if (firebaseEvent != null) {
+            print("firebaseEvent : $firebaseEvent ");
           }
           if (actionType == 'open_webview' && url != null) {
             Navigator.push(
@@ -278,8 +276,7 @@ class ImageComponent extends UIComponent {
   factory ImageComponent.fromJson(Map<String, dynamic> json) {
     return ImageComponent(
       key: json['key'],
-      imageUrl: json['data']
-          ['url'],
+      imageUrl: json['data']['url'],
     );
   }
 
