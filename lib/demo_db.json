@@ -138,6 +138,27 @@
                                     }
                                 }
                             }
+                        },
+                        {
+                            "type": "button_with_api",
+                            "key": "api_button",
+                            "data": {
+                                "child": {
+                                    "type": "text",
+                                    "key": "button_text",
+                                    "data": {
+                                        "text": "Submit"
+                                    }
+                                },
+                                "event": {
+                                    "apiUrl": "https://657fe3c26ae0629a3f53cd6b.mockapi.io/page_2",
+                                    "method": "GET",
+                                    "body": {
+                                        "name": "John",
+                                        "email": "john@example.com"
+                                    }
+                                }
+                            }
                         }
                     ]
                 }

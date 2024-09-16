@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:pookie/webview_screen.dart';
 
 abstract class UIComponent {
@@ -15,6 +17,8 @@ abstract class UIComponent {
           return ColumnComponent.fromJson(json);
         case 'text':
           return TextComponent.fromJson(json);
+        case 'button_with_api':
+          return ButtonComponentWithAPICalls.fromJson(json);
         case 'button':
           return ButtonComponent.fromJson(json);
         // Add more components here like button, card, etc.
@@ -164,7 +168,7 @@ class ButtonComponent extends UIComponent {
   @override
   Widget toWidget(context) {
     return Padding(
-      padding: EdgeInsets.all(padding?.toDouble() ?? 0.0) ?? EdgeInsets.zero,
+      padding: EdgeInsets.all(padding?.toDouble() ?? 0.0),
       child: ElevatedButton(
         onPressed: () {
           if (actionType == 'open_webview' && url != null) {
@@ -182,6 +186,81 @@ class ButtonComponent extends UIComponent {
         },
         child: child.toWidget(
             context), // Render the nested child component (e.g., TextComponent)
+      ),
+    );
+  }
+}
+
+class ButtonComponentWithAPICalls extends UIComponent {
+  final UIComponent child;
+  final String? apiUrl; // Make it nullable
+  final String method; // Set a default value
+  final Map<String, dynamic>? body; // Make it nullable
+  final int? padding;
+
+  ButtonComponentWithAPICalls({
+    required String key,
+    required this.child,
+    this.apiUrl,
+    required this.padding,
+    this.method = 'GET', // Default to GET if null
+    this.body,
+  }) : super(key);
+
+  factory ButtonComponentWithAPICalls.fromJson(Map<String, dynamic> json) {
+    return ButtonComponentWithAPICalls(
+      key: json['key'] ?? 'unknown', // Provide a default if null
+      child: UIComponent.fromJson(json['data']['child']),
+      apiUrl: json['data']['event']?['apiUrl'], // Use null if not present
+      method: json['data']['event']?['method'] ?? 'GET', // Default to 'GET'
+      body: json['data']['event']?['body'], // Null if not present
+      padding: json['data']['padding'],
+    );
+  }
+
+  Future<void> makeApiCall(BuildContext context) async {
+    if (apiUrl == null) {
+      print('No API URL provided');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No API URL provided')),
+      );
+      return;
+    }
+
+    try {
+      http.Response response;
+
+      if (method == 'POST') {
+        response = await http.post(
+          Uri.parse(apiUrl!),
+          headers: {'Content-Type': 'application/json'},
+          body: body != null ? jsonEncode(body) : null,
+        );
+      } else {
+        response = await http.get(Uri.parse(apiUrl!));
+      }
+
+      print('API Response: ${response.body}');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Success: ${response.body}')),
+      );
+    } catch (e) {
+      print('Error making API call: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+    }
+  }
+
+  @override
+  Widget toWidget(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(padding?.toDouble() ?? 0.0),
+      child: ElevatedButton(
+        onPressed: () async {
+          await makeApiCall(context); // Call API on button press
+        },
+        child: child.toWidget(context),
       ),
     );
   }
