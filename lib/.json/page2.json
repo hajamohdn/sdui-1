@@ -1,0 +1,537 @@
+[
+    {
+        "type": "appbar",
+        "color": "red",
+        "title": "Credit Score",
+        "leadAction": "pop",
+        "child": {
+            "type": "future_builder",
+            "url": "https://66fdad98699369308955ecb2.mockapi.io/page3",
+            "method": "GET",
+            "data": [
+                "score1",
+                "score1_content",
+                "score2",
+                "score2_content"
+            ],
+            "child": {
+                "type": "column",
+                "children": [
+                    {
+                        "type": "text",
+                        "padding": 4,
+                        "text": "Streak Score"
+                    },
+                    {
+                        "type": "container",
+                        "key": "key",
+                        "padding": 4,
+                        "child": {
+                            "type": "container",
+                            "key": "key",
+                            "padding": 4,
+                            "child": {
+                                "type": "card",
+                                "color": "red",
+                                "key": "key",
+                                "padding": 4,
+                                "elevation": 1,
+                                "child": {
+                                    "type": "row",
+                                    "padding": 2,
+                                    "children": [
+                                        {
+                                            "type": "expanded",
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "padding": 4,
+                                                "elevation": 1,
+                                                "child": {
+                                                    "type": "column",
+                                                    "children": [
+                                                        {
+                                                            "type": "text",
+                                                            "key": "key",
+                                                            "text": " Streak Score"
+                                                        },
+                                                        {
+                                                            "type": "text",
+                                                            "key": "key",
+                                                            "text": "score1"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "expanded",
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "padding": 4,
+                                                "elevation": 1,
+                                                "child": {
+                                                    "type": "column",
+                                                    "key": "key",
+                                                    "children": [
+                                                        {
+                                                            "type": "text",
+                                                            "key": "key",
+                                                            "text": "Excellent"
+                                                        },
+                                                        {
+                                                            "type": "text",
+                                                            "key": "key",
+                                                            "text": "As of 02 sep 2024"
+                                                        },
+                                                        {
+                                                            "type": "button",
+                                                            "key": "key",
+                                                            "actionType": "refresh_page",
+                                                            "padding": 6,
+                                                            "firebaseEvent": "",
+                                                            "child": {
+                                                                "type": "text",
+                                                                "key": "key",
+                                                                "text": "Refresh in 7 days"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "column",
+                        "children": [
+                            {
+                                "type": "text",
+                                "padding": 4,
+                                "text": "Important factors"
+                            },
+                            {
+                                "type": "container",
+                                "key": "outlineCardKey",
+                                "child": {
+                                    "type": "column",
+                                    "key": "key",
+                                    "children": [
+                                        {
+                                            "type": "padding",
+                                            "padding": 4,
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "child": {
+                                                    "type": "row",
+                                                    "mainAxisAlignment": "spaceBetween",
+                                                    "padding": 4,
+                                                    "children": [
+                                                        {
+                                                            "type": "column",
+                                                            "key": "columnKey",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "Repayment History"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "High Impact"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "column",
+                                                            "key": "column2Key",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "100%"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "Excellent"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "padding",
+                                            "padding": 4,
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "child": {
+                                                    "type": "row",
+                                                    "mainAxisAlignment": "spaceBetween",
+                                                    "padding": 4,
+                                                    "children": [
+                                                        {
+                                                            "type": "column",
+                                                            "key": "columnKey",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "Credit Utilisation"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "Low Impact"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "column",
+                                                            "key": "column2Key",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "80%"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "Excellent"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "padding",
+                                            "padding": 4,
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "child": {
+                                                    "type": "row",
+                                                    "mainAxisAlignment": "spaceBetween",
+                                                    "padding": 4,
+                                                    "children": [
+                                                        {
+                                                            "type": "column",
+                                                            "key": "columnKey",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "Credit Age"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "High Impact"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "column",
+                                                            "key": "column2Key",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "40%"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "Excellent"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "text",
+                        "padding": 4,
+                        "text": "Streak Score"
+                    },
+                    {
+                        "type": "container",
+                        "key": "key",
+                        "padding": 4,
+                        "child": {
+                            "type": "container",
+                            "key": "key",
+                            "padding": 4,
+                            "child": {
+                                "type": "card",
+                                "color": "red",
+                                "key": "key",
+                                "padding": 4,
+                                "elevation": 1,
+                                "child": {
+                                    "type": "row",
+                                    "padding": 2,
+                                    "children": [
+                                        {
+                                            "type": "expanded",
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "padding": 4,
+                                                "elevation": 1,
+                                                "child": {
+                                                    "type": "column",
+                                                    "key": "key",
+                                                    "children": [
+                                                        {
+                                                            "type": "text",
+                                                            "key": "key",
+                                                            "text": "Low Impact Validation"
+                                                        },
+                                                        {
+                                                            "type": "text",
+                                                            "key": "key",
+                                                            "text": "With minimum milestone"
+                                                        },
+                                                        {
+                                                            "type": "button",
+                                                            "key": "key",
+                                                            "actionType": "refresh_page",
+                                                            "padding": 6,
+                                                            "firebaseEvent": "",
+                                                            "child": {
+                                                                "type": "text",
+                                                                "key": "key",
+                                                                "text": "Know more"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "expanded",
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "padding": 4,
+                                                "elevation": 1,
+                                                "child": {
+                                                    "type": "column",
+                                                    "key": "key",
+                                                    "children": [
+                                                        {
+                                                            "type": "text",
+                                                            "key": "key",
+                                                            "text": "Streak Validation"
+                                                        },
+                                                        {
+                                                            "type": "text",
+                                                            "key": "key",
+                                                            "text": "24th of every month"
+                                                        },
+                                                        {
+                                                            "type": "button",
+                                                            "key": "key",
+                                                            "actionType": "refresh_page",
+                                                            "padding": 6,
+                                                            "firebaseEvent": "",
+                                                            "child": {
+                                                                "type": "text",
+                                                                "key": "key",
+                                                                "text": "Start Validate"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "column",
+                        "children": [
+                            {
+                                "type": "text",
+                                "padding": 4,
+                                "text": "Credit Records"
+                            },
+                            {
+                                "type": "container",
+                                "key": "outlineCardKey",
+                                "child": {
+                                    "type": "column",
+                                    "key": "key",
+                                    "children": [
+                                        {
+                                            "type": "padding",
+                                            "padding": 4,
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "child": {
+                                                    "type": "row",
+                                                    "mainAxisAlignment": "spaceBetween",
+                                                    "padding": 4,
+                                                    "children": [
+                                                        {
+                                                            "type": "column",
+                                                            "key": "columnKey",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "Repayment History"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "Low Impact"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "column",
+                                                            "key": "column2Key",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "46%"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "Low"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "padding",
+                                            "padding": 4,
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "child": {
+                                                    "type": "row",
+                                                    "mainAxisAlignment": "spaceBetween",
+                                                    "padding": 4,
+                                                    "children": [
+                                                        {
+                                                            "type": "column",
+                                                            "key": "columnKey",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "Credit Utilisation"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "High Impact"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "column",
+                                                            "key": "column2Key",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "98%"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "Excellent"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "padding",
+                                            "padding": 4,
+                                            "child": {
+                                                "type": "card",
+                                                "key": "key",
+                                                "child": {
+                                                    "type": "row",
+                                                    "mainAxisAlignment": "spaceBetween",
+                                                    "padding": 4,
+                                                    "children": [
+                                                        {
+                                                            "type": "column",
+                                                            "key": "columnKey",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "Credit Age"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "High Impact"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "column",
+                                                            "key": "column2Key",
+                                                            "children": [
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardHeading",
+                                                                    "text": "40%"
+                                                                },
+                                                                {
+                                                                    "type": "text",
+                                                                    "key": "cardSubHeading",
+                                                                    "text": "Excellent"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+]

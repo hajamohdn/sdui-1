@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'ui_service.dart';
-import 'ui_component.dart';
+import 'components/ui_service.dart';
+import 'components/ui_component.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
           future: UIService().fetchUIConfig(mainViewUrl),
           builder: (BuildContext context, AsyncSnapshot<UIComponent> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
+              return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData) {
               return ListView(
                 children: [snapshot.data!]
@@ -27,27 +27,10 @@ class MyApp extends StatelessWidget {
                     .toList(),
               );
             } else {
-              return const Text('No data');
+              return const Center(child: Text('No data'));
             }
           },
         ),
-      ),
-    );
-  }
-}
-
-class DynamicUIScreen extends StatelessWidget {
-  final List<UIComponent> components;
-
-  const DynamicUIScreen({super.key, required this.components});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Dynamic UI from API")),
-      body: ListView(
-        children:
-            components.map((component) => component.toWidget(context)).toList(),
       ),
     );
   }

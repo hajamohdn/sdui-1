@@ -1,0 +1,37 @@
+[
+    {
+        "type": "padding",
+        "padding": 100,
+        "child": {
+            "type": "column",
+            "alignment": "spaceBetween",
+            "key": "key",
+            "children": [
+                {
+                    "type": "text",
+                    "text": "On Boarding View"
+                },
+                {
+                    "type": "image",
+                    "fit": "fitHeight",
+                    "height": 400,
+                    "key": "",
+                    "url": "https://media.istockphoto.com/id/1438989404/vector/credit-score-financial-risks-measurement-of-mortgage-loans-tiny-people-improve-level.jpg?s=612x612&w=0&k=20&c=DFdDMVtHiRuGfuCRYuEuJo4WYcYDdxQvp_xxP-tvCCY="
+                },
+                {
+                    "type": "button",
+                    "key": "key",
+                    "actionType": "push_and_call_api",
+                    "url": "https://657fe3c26ae0629a3f53cd6b.mockapi.io/page_2",
+                    "padding": 4,
+                    "firebaseEvent": "firebase_event",
+                    "child": {
+                        "type": "text",
+                        "key": "",
+                        "text": "Next View"
+                    }
+                }
+            ]
+        }
+    }
+]

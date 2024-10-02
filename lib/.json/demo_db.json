@@ -1,0 +1,131 @@
+[
+    {
+        "type": "container",
+        "key": "outlineCardKey",
+        "backgroundColor": "0xFFFFFFFF",
+        "padding": 6,
+        "child": {
+            "type": "column",
+            "key": "key",
+            "children": [
+                {
+                    "type": "row",
+                    "mainAxisAlignment": "spaceBetween",
+                    "padding": 4,
+                    "children": [
+                        {
+                            "type": "column",
+                            "key": "columnKey",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "key": "cardHeading",
+                                    "text": "Repayment History"
+                                },
+                                {
+                                    "type": "text",
+                                    "key": "cardSubHeading",
+                                    "text": "Hign Impact"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "column",
+                            "key": "column2Key",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "key": "cardHeading",
+                                    "text": "100%"
+                                },
+                                {
+                                    "type": "text",
+                                    "key": "cardSubHeading",
+                                    "text": "Excellent"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "mainAxisAlignment": "spaceBetween",
+                    "padding": 4,
+                    "children": [
+                        {
+                            "type": "column",
+                            "key": "columnKey",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "key": "cardHeading",
+                                    "text": "Credit Urilisation"
+                                },
+                                {
+                                    "type": "text",
+                                    "key": "cardSubHeading",
+                                    "text": "Low Impact"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "column",
+                            "key": "column2Key",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "key": "cardHeading",
+                                    "text": "80%"
+                                },
+                                {
+                                    "type": "text",
+                                    "key": "cardSubHeading",
+                                    "text": "Excellent"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "mainAxisAlignment": "spaceBetween",
+                    "padding": 4,
+                    "children": [
+                        {
+                            "type": "column",
+                            "key": "columnKey",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "key": "cardHeading",
+                                    "text": "Credit Age"
+                                },
+                                {
+                                    "type": "text",
+                                    "key": "cardSubHeading",
+                                    "text": "Hign Impact"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "column",
+                            "key": "column2Key",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "key": "cardHeading",
+                                    "text": "40%"
+                                },
+                                {
+                                    "type": "text",
+                                    "key": "cardSubHeading",
+                                    "text": "Excellent"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

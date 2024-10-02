@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pookie/ui_component.dart';
-import 'package:pookie/ui_service.dart';
+import 'package:sdui/components/ui_component.dart';
+import 'package:sdui/components/ui_service.dart';
 
 class AnotherScreen extends StatefulWidget {
   final String url;
@@ -19,9 +19,9 @@ class _AnotherScreenState extends State<AnotherScreen> {
           future: UIService().fetchUIConfig(widget.url),
           builder: (BuildContext context, AsyncSnapshot<UIComponent> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
+              return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData) {
               return ListView(
                 children: [snapshot.data!]
@@ -29,7 +29,7 @@ class _AnotherScreenState extends State<AnotherScreen> {
                     .toList(),
               );
             } else {
-              return const Text('No data');
+              return const Center(child: Text('No data'));
             }
           },
         ),

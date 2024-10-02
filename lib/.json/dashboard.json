@@ -1,0 +1,75 @@
+[
+    {
+        "type": "container",
+        "key": "key",
+        "padding": 4,
+        "child": {
+            "type": "container",
+            "key": "key",
+            "padding": 4,
+            "child": {
+                "type": "card",
+                "key": "key",
+                "padding": 4,
+                "elevation": 1,
+                "child": {
+                    "type": "row",
+                    "padding": 2,
+                    "children": [
+                        {
+                            "type": "expanded",
+                            "child": {
+                                "type": "card",
+                                "key": "key",
+                                "padding": 4,
+                                "elevation": 1,
+                                "child": {
+                                    "type": "text",
+                                    "key": "key",
+                                    "text": " Streak Score : 782"
+                                }
+                            }
+                        },
+                        {
+                            "type": "expanded",
+                            "child": {
+                                "type": "card",
+                                "key": "key",
+                                "padding": 4,
+                                "elevation": 1,
+                                "child": {
+                                    "type": "column",
+                                    "key": "key",
+                                    "children": [
+                                        {
+                                            "type": "text",
+                                            "key": "key",
+                                            "text": "Excellent"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "key": "key",
+                                            "text": "As of 02 sep 2024"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "key": "key",
+                                            "actionType": "refresh_page",
+                                            "padding": 6,
+                                            "firebaseEvent": "",
+                                            "child": {
+                                                "type": "text",
+                                                "key": "key",
+                                                "text": "Refresh in 7 days"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+]
