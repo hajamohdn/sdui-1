@@ -77,6 +77,10 @@ Color getColors(String color) {
   }
 }
 
+double convertDouble(String? height) => double.tryParse(height ?? "0") ?? 0.0;
+
+double getPadding(String? padding) => double.tryParse(padding ?? "0") ?? 0.0;
+
 class ContainerComponent extends UIComponent {
   final UIComponent child;
   final Color? backgroundColor;
@@ -97,10 +101,10 @@ class ContainerComponent extends UIComponent {
     return ContainerComponent(
       key: json['key'] ?? "",
       backgroundColor: json['color'] != null ? getColors(json['color']) : null,
-      padding: json['padding']?.toDouble() ?? 0.0,
+      padding: getPadding(json['padding']?.toString()),
       child: UIComponent.fromJson(json['child']),
-      height: json['height']?.toDouble() ?? 0.0,
-      width: json.containsKey('width') ? json['width']?.toDouble() : null,
+      // height: getHeight(json['height']?.toString()),
+      width: json.containsKey('width') ? json['width'] : null,
     );
   }
 
@@ -175,7 +179,7 @@ class PaddingComponent extends UIComponent {
   factory PaddingComponent.fromJson(Map<String, dynamic> json) {
     return PaddingComponent(
       key: json['key'] ?? "",
-      padding: json['padding']?.toDouble() ?? 0.0,
+      padding: getPadding(json['padding']?.toString()),
       child: UIComponent.fromJson(json['child']),
     );
   }
@@ -284,7 +288,7 @@ class RowComponent extends UIComponent {
 
       return RowComponent(
         key: json['key'] ?? "",
-        padding: double.tryParse(json["padding"].toString()) ?? 0.0,
+        padding: convertDouble(json["padding"]?.toString()),
         mainAxisAlignment: getMainAlignment(json["mainAxisAlignment"]),
         children: children,
       );
@@ -349,9 +353,7 @@ class TextComponent extends UIComponent {
     return TextComponent(
         key: json['key'] ?? "",
         text: json['text'],
-        padding: (json['padding'] != null && json['padding'] is int)
-            ? json['padding'].toDouble()
-            : 0.0);
+        padding: getPadding(json['padding']?.toString()));
   }
 
   @override
@@ -472,7 +474,7 @@ class ButtonComponent extends UIComponent {
   final UIComponent child;
   final String actionType;
   final String? url;
-  final int? padding;
+  final double? padding;
   final String? firebaseEvent;
 
   ButtonComponent({
@@ -490,7 +492,7 @@ class ButtonComponent extends UIComponent {
       child: UIComponent.fromJson(json['child']),
       actionType: json['actionType'],
       url: json['url'],
-      padding: json['padding'],
+      padding: getPadding(json['padding']?.toString()),
       firebaseEvent: json['firebaseEvent'],
     );
   }
@@ -498,7 +500,7 @@ class ButtonComponent extends UIComponent {
   @override
   Widget toWidget(context) {
     return Padding(
-      padding: EdgeInsets.all(padding?.toDouble() ?? 0.0),
+      padding: EdgeInsets.all(padding ?? 0.0),
       child: ElevatedButton(
         onPressed: () {
           if (firebaseEvent != null) {
@@ -550,7 +552,7 @@ class ButtonComponentWithAPICalls extends UIComponent {
   final String? apiUrl;
   final String method;
   final Map<String, dynamic>? body;
-  final int padding;
+  final double padding;
 
   ButtonComponentWithAPICalls({
     required String key,
@@ -568,14 +570,14 @@ class ButtonComponentWithAPICalls extends UIComponent {
       apiUrl: json['event']?['apiUrl'],
       method: json['event']?['method'] ?? 'GET',
       body: json['event']?['body'],
-      padding: json['padding'] ?? 0,
+      padding: getPadding(json['padding']?.toString()),
     );
   }
 
   @override
   Widget toWidget(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(padding.toDouble()),
+      padding: EdgeInsets.all(padding),
       child: ElevatedButton(
         onPressed: () async {
           if (apiUrl != null) {
@@ -610,7 +612,7 @@ class ButtonComponentWithAPICalls extends UIComponent {
 class ImageComponent extends UIComponent {
   final String imageUrl;
   final BoxFit? fit;
-  final int? height;
+  final double? height;
   final int? width;
 
   ImageComponent({
@@ -626,7 +628,7 @@ class ImageComponent extends UIComponent {
       key: json['key'] ?? "",
       imageUrl: json['url'],
       fit: getFit(json['fit']),
-      height: json['height'],
+      height: convertDouble(json['height']?.toString()),
     );
   }
 
@@ -726,9 +728,9 @@ class CardComponent extends UIComponent {
   factory CardComponent.fromJson(Map<String, dynamic> json) {
     return CardComponent(
       key: json['key'] ?? "",
-      padding: json["padding"]?.toDouble() ?? 0.0,
+      padding: convertDouble(json["padding"]?.toString()),
       child: UIComponent.fromJson(json['child']),
-      elevation: json['elevation']?.toDouble(),
+      elevation: convertDouble(json['elevation']?.toString()),
       color: json['color'] != null ? getColors(json["color"]) : null,
       height:
           json['height'] == null ? double.infinity : json['height']?.toDouble(),

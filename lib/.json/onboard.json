@@ -1,22 +1,21 @@
 [
     {
         "type": "padding",
-        "padding": 100,
+        "padding": 70,
         "child": {
             "type": "column",
-            "alignment": "spaceBetween",
+            "alignment": "end",
             "key": "key",
             "children": [
                 {
                     "type": "text",
-                    "text": "On Boarding View"
+                    "text": "Credit Score"
                 },
                 {
                     "type": "image",
-                    "fit": "fitHeight",
-                    "height": 400,
                     "key": "",
-                    "url": "https://media.istockphoto.com/id/1438989404/vector/credit-score-financial-risks-measurement-of-mortgage-loans-tiny-people-improve-level.jpg?s=612x612&w=0&k=20&c=DFdDMVtHiRuGfuCRYuEuJo4WYcYDdxQvp_xxP-tvCCY="
+                    "height": 300,
+                    "url": "https://cdni.iconscout.com/illustration/premium/thumb/credit-score-illustration-download-in-svg-png-gif-file-formats--financial-scoring-history-dashboard-online-banking-agile-pack-people-illustrations-5253315.png?f=webp"
                 },
                 {
                     "type": "button",
@@ -28,8 +27,13 @@
                     "child": {
                         "type": "text",
                         "key": "",
-                        "text": "Next View"
+                        "text": "Get Credit Score"
                     }
+                },
+                {
+                    "type": "text",
+                    "padding": 6,
+                    "text": "*Terms and Conditions Apply"
                 }
             ]
         }
