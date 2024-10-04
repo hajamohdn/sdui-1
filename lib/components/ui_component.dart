@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:sdui/view/another_screen.dart';
-import 'package:sdui/components/webview_screen.dart';import 'package:http/http.dart' as http;
+import 'package:sdui/components/webview_screen.dart';
+import 'package:http/http.dart' as http;
 
 Map<String, String> scoresData = {};
 
@@ -797,8 +798,11 @@ class FutureBuilderComponents extends UIComponent {
     if (response.statusCode == 200) {
       log("FutureBuilderComponents - status code : ${response.statusCode}");
       var json = jsonDecode(response.body);
-      for (var i = 0; i < json.length; i++) {
-        scoresData[json[i].keys.elementAt(i)] = json[i].values.elementAt(i);
+      for (var i = 0; i < json[0].length; i++) {
+        final scrMap = <String, String>{
+          json[0].keys.elementAt(i): json[0].values.elementAt(i)
+        };
+        scoresData.addEntries(scrMap.entries);
       }
       log("from store_data : $scoresData");
       log("FutureBuilderComponents - json : $json");

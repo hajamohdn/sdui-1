@@ -53,7 +53,7 @@
                                                         {
                                                             "type": "text",
                                                             "key": "key",
-                                                            "text": " Streak Score"
+                                                            "text": "score1_content"
                                                         },
                                                         {
                                                             "type": "text",
@@ -73,29 +73,16 @@
                                                 "elevation": 1,
                                                 "child": {
                                                     "type": "column",
-                                                    "key": "key",
                                                     "children": [
                                                         {
                                                             "type": "text",
                                                             "key": "key",
-                                                            "text": "Excellent"
+                                                            "text": "score2_content"
                                                         },
                                                         {
                                                             "type": "text",
                                                             "key": "key",
-                                                            "text": "As of 02 sep 2024"
-                                                        },
-                                                        {
-                                                            "type": "button",
-                                                            "key": "key",
-                                                            "actionType": "refresh_page",
-                                                            "padding": 6,
-                                                            "firebaseEvent": "",
-                                                            "child": {
-                                                                "type": "text",
-                                                                "key": "key",
-                                                                "text": "Refresh in 7 days"
-                                                            }
+                                                            "text": "score2"
                                                         }
                                                     ]
                                                 }

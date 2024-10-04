@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 import 'ui_component.dart';
 
 const String mainViewUrl =
-    // "https://34.49.13.231.nip.io/dyn-screens/v1/screen1?apikey=WaqjGsSlJu8RMeamjEIpZYbEycwiPoz47AL4Es7ypFG7EIG7";
-    "https://657fe3c26ae0629a3f53cd6b.mockapi.io/pookie";
+    "https://34.49.13.231.nip.io/dyn-screens/v1/screen1?apikey=WaqjGsSlJu8RMeamjEIpZYbEycwiPoz47AL4Es7ypFG7EIG7";
+// "https://657fe3c26ae0629a3f53cd6b.mockapi.io/pookie";
 
 class UIService {
   Future<UIComponent> fetchUIConfig(String url) async {
