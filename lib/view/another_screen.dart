@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'components/ui_service.dart';
-import 'components/ui_component.dart';
+import 'package:sdui/components/ui_component.dart';
+import 'package:sdui/components/ui_service.dart';
 
-void main() {
-  runApp(const MyApp());
+class AnotherScreen extends StatefulWidget {
+  final String url;
+  const AnotherScreen({required this.url, super.key});
+
+  @override
+  State<AnotherScreen> createState() => _AnotherScreenState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class _AnotherScreenState extends State<AnotherScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: FutureBuilder<UIComponent>(
-          future: UIService().fetchUIConfig(mainViewUrl),
+          future: UIService().fetchUIConfig(widget.url),
           builder: (BuildContext context, AsyncSnapshot<UIComponent> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());

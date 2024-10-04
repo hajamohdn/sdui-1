@@ -1,0 +1,41 @@
+[
+    {
+        "type": "padding",
+        "padding": 70,
+        "child": {
+            "type": "column",
+            "alignment": "end",
+            "key": "key",
+            "children": [
+                {
+                    "type": "text",
+                    "text": "Credit Score"
+                },
+                {
+                    "type": "image",
+                    "key": "",
+                    "height": 300,
+                    "url": "https://cdni.iconscout.com/illustration/premium/thumb/credit-score-illustration-download-in-svg-png-gif-file-formats--financial-scoring-history-dashboard-online-banking-agile-pack-people-illustrations-5253315.png?f=webp"
+                },
+                {
+                    "type": "button",
+                    "key": "key",
+                    "actionType": "push_and_call_api",
+                    "url": "https://657fe3c26ae0629a3f53cd6b.mockapi.io/page_2",
+                    "padding": 4,
+                    "firebaseEvent": "firebase_event",
+                    "child": {
+                        "type": "text",
+                        "key": "",
+                        "text": "Get Credit Score"
+                    }
+                },
+                {
+                    "type": "text",
+                    "padding": 6,
+                    "text": "*Terms and Conditions Apply"
+                }
+            ]
+        }
+    }
+]

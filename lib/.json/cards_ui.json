@@ -1,0 +1,166 @@
+[
+    {
+        "type": "column",
+        "children": [
+            {
+                "type": "text",
+                "padding": 4,
+                "text": "Important factors"
+            },
+            {
+                "type": "container",
+                "key": "outlineCardKey",
+                "child": {
+                    "type": "column",
+                    "key": "key",
+                    "children": [
+                        {
+                            "type": "padding",
+                            "padding": 4,
+                            "child": {
+                                "type": "container",
+                                "color": "red",
+                                "key": "key",
+                                "child": {
+                                    "type": "row",
+                                    "mainAxisAlignment": "spaceBetween",
+                                    "padding": 4,
+                                    "children": [
+                                        {
+                                            "type": "column",
+                                            "key": "columnKey",
+                                            "children": [
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardHeading",
+                                                    "text": "Repayment History"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardSubHeading",
+                                                    "text": "High Impact"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "key": "column2Key",
+                                            "children": [
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardHeading",
+                                                    "text": "100%"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardSubHeading",
+                                                    "text": "Excellent"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "type": "padding",
+                            "padding": 4,
+                            "child": {
+                                "type": "container",
+                                "color": "red",
+                                "key": "key",
+                                "child": {
+                                    "type": "row",
+                                    "mainAxisAlignment": "spaceBetween",
+                                    "padding": 4,
+                                    "children": [
+                                        {
+                                            "type": "column",
+                                            "key": "columnKey",
+                                            "children": [
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardHeading",
+                                                    "text": "Credit Utilisation"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardSubHeading",
+                                                    "text": "Low Impact"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "key": "column2Key",
+                                            "children": [
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardHeading",
+                                                    "text": "80%"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardSubHeading",
+                                                    "text": "Excellent"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "type": "padding",
+                            "padding": 4,
+                            "child": {
+                                "type": "container",
+                                "color": "red",
+                                "key": "key",
+                                "child": {
+                                    "type": "row",
+                                    "mainAxisAlignment": "spaceBetween",
+                                    "padding": 4,
+                                    "children": [
+                                        {
+                                            "type": "column",
+                                            "key": "columnKey",
+                                            "children": [
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardHeading",
+                                                    "text": "Credit Age"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardSubHeading",
+                                                    "text": "High Impact"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "column",
+                                            "key": "column2Key",
+                                            "children": [
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardHeading",
+                                                    "text": "40%"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "key": "cardSubHeading",
+                                                    "text": "Excellent"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]

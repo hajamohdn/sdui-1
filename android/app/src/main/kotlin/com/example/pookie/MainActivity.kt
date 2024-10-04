@@ -1,4 +1,4 @@
-package com.example.pookie
+package com.example.sdui
 
 import io.flutter.embedding.android.FlutterActivity
 
