@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sdui/components/ui_component.dart';
-import 'package:sdui/components/ui_service.dart';
+import 'package:sdui/data/ui_service.dart';
 
 class AnotherScreen extends StatefulWidget {
   final String url;

@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
-import 'ui_component.dart';
+import '../components/ui_component.dart';
 
 const String mainViewUrl =
     "https://34.49.13.231.nip.io/dyn-screens/v1/screen1?apikey=WaqjGsSlJu8RMeamjEIpZYbEycwiPoz47AL4Es7ypFG7EIG7";

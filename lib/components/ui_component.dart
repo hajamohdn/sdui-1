@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:sdui/view/another_screen.dart';
-import 'package:sdui/components/webview_screen.dart';
+import 'package:sdui/view/next_view.dart';
+import 'package:sdui/components/webview_component.dart';
 import 'package:http/http.dart' as http;
 
 Map<String, String> scoresData = {};
@@ -17,6 +17,8 @@ abstract class UIComponent {
       switch (json['type'].toString().toLowerCase()) {
         case 'container':
           return ContainerComponent.fromJson(json);
+        case 'visibility':
+          return VisibilityComponent.fromJson(json);
         case 'center':
           return ContainerComponent.fromJson(json);
         case 'padding':
@@ -89,7 +91,7 @@ class ContainerComponent extends UIComponent {
   final double? width;
 
   ContainerComponent({
-    required String key,
+    key,
     required this.padding,
     required this.child,
     this.backgroundColor,
@@ -133,6 +135,43 @@ class ContainerComponent extends UIComponent {
   }
 }
 
+class VisibilityComponent extends UIComponent {
+  final bool? isVisible;
+  final UIComponent child;
+
+  VisibilityComponent({
+    key,
+    this.isVisible,
+    required this.child,
+  }) : super(key);
+
+  factory VisibilityComponent.fromJson(Map<String, dynamic> json) {
+    return VisibilityComponent(
+      key: json['key'] ?? "",
+      isVisible: json['isVisible'],
+      child: UIComponent.fromJson(json['child']),
+    );
+  }
+
+  @override
+  Widget toWidget(context) {
+    return Visibility(
+      visible: isVisible ?? false,
+      child: child.toWidget(context),
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'type': 'visibility',
+      'key': key,
+      'isVisible': isVisible ?? false,
+      'child': child.toJson(),
+    };
+  }
+}
+
 class CenterComponent extends UIComponent {
   final UIComponent child;
 
@@ -171,7 +210,7 @@ class PaddingComponent extends UIComponent {
   final double padding;
 
   PaddingComponent({
-    required String key,
+    key,
     required this.padding,
     required this.child,
   }) : super(key);
@@ -208,7 +247,7 @@ class ColumnComponent extends UIComponent {
   final List<UIComponent> children;
 
   ColumnComponent({
-    required String key,
+    key,
     this.alignment,
     required this.children,
   }) : super(key);
@@ -344,7 +383,7 @@ class TextComponent extends UIComponent {
   final double? padding;
 
   TextComponent({
-    required String key,
+    key,
     required this.text,
     this.padding,
   }) : super(key);
@@ -391,7 +430,7 @@ class AppBarComponent extends UIComponent {
   final Color? color;
 
   AppBarComponent({
-    required String key,
+    key,
     required this.title,
     required this.leadAction,
     required this.child,
@@ -478,7 +517,7 @@ class ButtonComponent extends UIComponent {
   final String? firebaseEvent;
 
   ButtonComponent({
-    required String key,
+    key,
     required this.child,
     required this.actionType,
     required this.padding,
@@ -555,7 +594,7 @@ class ButtonComponentWithAPICalls extends UIComponent {
   final double padding;
 
   ButtonComponentWithAPICalls({
-    required String key,
+    key,
     required this.padding,
     required this.child,
     this.apiUrl,
@@ -616,7 +655,7 @@ class ImageComponent extends UIComponent {
   final int? width;
 
   ImageComponent({
-    required String key,
+    key,
     required this.imageUrl,
     this.fit,
     this.height,
@@ -716,7 +755,7 @@ class CardComponent extends UIComponent {
   final double padding;
 
   CardComponent({
-    required String key,
+    key,
     required this.padding,
     this.elevation,
     required this.child,
@@ -846,7 +885,7 @@ class FutureBuilderComponents extends UIComponent {
 }
 
 class PlaceholderComponent extends UIComponent {
-  PlaceholderComponent({required String key}) : super(key);
+  PlaceholderComponent({key}) : super(key);
 
   factory PlaceholderComponent.fromJson(Map<String, dynamic> json) {
     return PlaceholderComponent(key: json['key'] ?? "");

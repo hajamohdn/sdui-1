@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'components/ui_service.dart';
+import 'data/ui_service.dart';
 import 'components/ui_component.dart';
 
 void main() {
